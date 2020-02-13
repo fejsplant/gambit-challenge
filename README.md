@@ -1,5 +1,5 @@
 # gambit-callenge
-Web app presenting TUF-2000M  data
+## Web app presenting TUF-2000M  data
 
 Gambit are in the posession of a TUF-2000M ultrasonic energy meter, with a Modubus interface, wicht is providing a live data feed to e website. This project is an answer to the Gambit Challenge, fetching the TUF-2000 data, parsinging, converting and presenting it in a human readable format. 
 
