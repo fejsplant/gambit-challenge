@@ -16,7 +16,7 @@ The flow is as followes. when teh web page is loaded it sends a request to the p
 This process is can also be manually triggerd by clicking the "Fetch data" button on the webpage.
 
 
-## Future imporvments
+## Future improwments
 
 ### User interface
 The presentations of teh data could be improved upon by furhter visulaization meens. This could include graphical meters and grapchs depending on the data beeing presented. For example a "dial meter" couldbe used for temperature monitoring. Different grapch sould be used for flow etc. to this end Google grapsh js package cpuld be utelized. The fetchig of the data could also be auomtaed to uipdate the table ever X-seconds. If need be the update intervall could be user cahgable by for example entering a update intervall in seconds in a textbox or the GUI might provide a set of predefined updete intervall to choose from by radio buttens or perhaps a slider.
