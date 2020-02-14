@@ -1,19 +1,15 @@
 # gambit-callenge
 ## Web app presenting TUF-2000M  data
 
-Gambit are in the posession of a TUF-2000M ultrasonic energy meter, with a Modubus interface, wicht is providing a live data feed to e website. This project is an answer to the Gambit Challenge, fetching the TUF-2000 data, parsinging, converting and presenting it in a human readable format. 
+Gambit are in the possession of a TUF-2000M ultrasonic energy meter, with a Modubus interface, witch is providing a live data feed to e website. This project is an answer to the Gambit Challenge, fetching the TUF-2000 data, parsing, converting and presenting it in a human readable format.
+I have chosen "Option 2: Web or native app" to complete this task and created a web app hosted on a Amazon Web Service AWS.
+The project is implemented using PHP, JavaScript/jQuery and CSS. PHP is the back bone of the project, doing all the heavy lifting such as parsing and converting the data in the back end and providing the actual web page. The information is moved between the back and frontend with JavaScript/jQuery and Ajax functions. The data fetched this way is then presented in a clear, easily readable table. The visualization, i.e. the looks, of the table is governed by CSS
+The web app itself is hosted on a Amazon AWS server.
+The project consists of a PHP backend simply called “backend.php” and a frontend webpage called “main.php.”
+The flow is as follows: when the web page is loaded it sends a request to the backend through ajax, requesting the TUF-2000 data. The backend receives the request fetches the data and begins to parse and convert it with the aid of different conversion helper functions. And deposits the parsed data in an array witch is JSON-encoded and sent back to the frontend. In the front end the received data is looped through and used to build a table which is presented to the user.
+This process is can also be manually triggered by clicking the "Fetch data" button on the webpage.
 
-I have chosen "Option 2: Web or nativ app" to complete this task and created a web app hosted on a Amazon Web Service AWS.
 
-The project is implemented using using PHP, javascriopt/jquery and css. PHP is the back bone of the project, doing all the heavy lifting such as parsing and converting the data in the back end and prviding the actual web page. The information is moved between the back and frontend with javascript/jquery and ajax functions. The data fetched yhis way is then presented in a clear, easaly readable table. Teh visluaization, the looks, of the table is governed by CSS
-
-The web app itself is hostend on a Amazon AWS server configured with elastik beanstalk.
-
-The project consists of a PHP backend simply called backend.php and a frontend webpage called main.php.
-
-The flow is as followes. when teh web page is loaded it sends a request to the packend through ajax, requesting the TUF-2000 data. The backend receives the request fetches the data and begins to parse and convert it wioth the the aid of differnte conversion helper functions. And deposits the parsed data in a array witch is JSON-encoded and sent back to the frontend. In the frpnt end the received data is looped through and used to build a inforation table wich is presented to the user.
-
-This process is can also be manually triggerd by clicking the "Fetch data" button on the webpage.
 
 
 ## Future improwments
