@@ -12,10 +12,10 @@ This process is can also be manually triggered by clicking the "Fetch data" butt
 ## Future improvements
 
 ### User interface
-The presentations of the data could be improved upon by further visualization. This could include graphical meters and graphs depending on the data being presented. For example a "dial meter" could be used for temperature monitoring. Different graphs could be used for flow etc. to this end Google graphs js package could be utilized. The fetching of the data could also be automated to update the table ever X-seconds. If need be the update interval could be user changeable by for example entering a update interval, in seconds, in a textbox. Or the page itself might provide a set of predefined update intervals to choose from, define by either radio buttons or perhaps a slider..
+The presentations of the data could be improved upon by further visualization. This could include graphical meters and graphs depending on the data being presented. For example a "dial meter" could be used for temperature monitoring. Different graphs could be used for flow etc. to this end Google graphs js package could be utilized. The fetching of the data could also be automated to update the table ever X-seconds. If need be the update interval could be user changeable by for example entering a update interval, in seconds, in a textbox. Or the page itself might provide a set of predefined update intervals to choose from, define by either radio buttons or perhaps a slider.
 
 ### Warning system
 The backend could be fitted with warning systems. For example if a temperature where to reach a pre-set warning level, or any of the other measurements, the system could be set to send mails or some form of messages to a administrator. This could also be visualized in the frontend by turning the table value background to orange and red for the anomalous reading.
 
 ### DB integration
-In order to store measurments in the long teerm some form of DB-integraton storage could be used. Te data could be stored in a database table at a preset interall. This could then be used to show historaical data and create statistiks reports.
+In order to store measurements in the long term some form of DB-integration storage could be used. The data could be stored in a database table at a pre-set interval. This could then be used to show historical data and create statistics reports.
