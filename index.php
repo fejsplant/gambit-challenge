@@ -7,163 +7,78 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<!-- The loading Modal -->
+<!-- The loading Modal --a>
+<!-- Loading "Spinner when fetching and parsing data"-->
 <div id="loadingModal" class="modal">
-
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-
         <div id='loader' style="text-align: center">
             <h4>Loading pleas wait</h4>
-
             <img src='idle_gambit.gif' >
         </div>
     </div>
 
 </div>
-<!-- Image loader -->
+
 <?php
+    /*Fetches tuf-2000m data and stores in variable
+    *Test
+    */
+   // $jsonData = file_get_contents('http://tuftuf.gambitlabs.fi/feed.txt');
+?>
 
-
-$jsonData = file_get_contents('http://tuftuf.gambitlabs.fi/feed.txt');
-
-
-
-    ?>
-    <!doctype html>
+<!doctype html>
     <html lang="en">
+        <body>
+            <div style="text-align:center; margin-top:40px; ">
+                <h1>TUF-2000M Readouts <div id ="readDate"><div> </h1>
+                <button onclick="createTable()" class="btn btn-primary" style="margin-bottom: 10px;">
 
-    <body>
-    <section class="Beginning">
-        <div style="text-align:center; margin-top:40px; ">
-            <h1>TUF-2000M Readouts <div id ="readDate"><div> </h1>
-            <button onclick="createTable()">
-                createtable
-            </button>
-        </div>
+                    Get data
+                </button>
+            </div>
 
-
-
-    </section>
-
-
-    <div class="container" >
-    <table id="table1"  class="table table-hover table-condensed table-striped" >
-
-        <tr>
-
-            <th>Name</th>
-            <th>Converted value</th>
-            <th>Unit</th>
-            <th>Register</th>
-            <th>Original (high/low)</th>
-            <th>Format</th>
-        </tr>
-
-    </table>
-    </div>
-
-
-    </body>
+            <div class="container" >
+                <table id="table1"  class="table table-hover table-condensed table-striped" >
+                    <tr>
+                        <th>Name</th>
+                        <th>Converted value</th>
+                        <th>Unit</th>
+                        <th>Register</th>
+                        <th>Original (high/low)</th>
+                        <th>Format</th>
+                    </tr>
+                 </table>
+            </div>
+        </body>
     </html>
 
 
 <script>
-
+    /*Creates table on page load*/
     $(document).ready(function() {
-
         createTable();
-
     });
 
-
-
-    function doAjax(){
-
-        $("#box").load("http://tuftuf.gambitlabs.fi/feed.txt");
-    }
-    var interval = 1000;  // 1000 = 1 second, 3000 = 3 seconds
-    function getRawData() {
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/backend.php",
-            data:{'callFunction':'getRawData'},
-            dataType: 'json',
-            success: function (data) {
-
-                console.log("success    ");
-                console.log(data);
-            },
-            complete: function (data) {
-                // Schedule the next
-                //  setTimeout(doAjax, interval);
-                console.log("in complete");
-                console.log(data);
-            }
-        });
-    }
-
-
-    function getFileDate() {
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/backend.php",
-            data:{'callFunction':'getFileDate'},
-            dataType: 'json',
-            success: function (data) {
-
-                console.log("success    ");
-                 console.log(data);
-                $("#readDate").html(data);
-                // $('#readDate').innerText(data);
-            },
-            complete: function (data) {
-                // Schedule the next
-                //  setTimeout(doAjax, interval);
-                console.log("in completed");
-                console.log(data);
-            }
-        });
-    }
-
-    function getFlowRate() {
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/backend.php",
-            data:{'callFunction':'getFlowRate'},
-            dataType: 'json',
-            success: function (data) {
-
-                $("#flowRateData").html(data);
-                // $('#readDate').innerText(data);
-            },
-            complete: function (data) {
-                // Schedule the next
-                //  setTimeout(doAjax, interval);
-                console.log("in completedd");
-                console.log(data);
-            }
-        });
-    }
-
+    /*Main worker. Presents loader, fetches daa from backend. On success shows,
+*removes loader and creates new table with data
+* */
     function createTable() {
-
-
-        // console.log("in createtable");
         $.ajax({
             type: 'POST',
+            //Develop Url
             url: "http://localhost/backend.php",
+            /*OBS production url*/
+            //url: "http://tuf-2000m-challenge.us-west-2.elasticbeanstalk.com/backend.php",
             data: {'callFunction': 'createTable'},
             dataType: 'json',
 
             beforeSend: function(){
-
                 $("#loadingModal").show();
             },
             success: function (data) {
 
-                // console.log("in create table success");
                 $('#table1').find('tbody').empty();
                 $('<tr>').append(
                     $('<th>').text("Register/s"),
@@ -173,7 +88,6 @@ $jsonData = file_get_contents('http://tuftuf.gambitlabs.fi/feed.txt');
                     $('<th>').text("Original Low/high"),
                     $('<th>').text("format"),
                 ).appendTo('#table1');
-
 
                 $.each(data, function (i, item) {
                     var $tr = $('<tr>').append(
@@ -187,16 +101,55 @@ $jsonData = file_get_contents('http://tuftuf.gambitlabs.fi/feed.txt');
                     // console.log($tr.wrap('<p>').html());
                 });
             },
-
-
             complete:function(data){
                 $("#loadingModal").hide();
             }
         });
+    }
+    /*Automated table update, not in use*/
+    // var interval = 1000;  // 1000 = 1 second, 3000 = 3 seconds
+    //  setTimeout(createTable, interval);
 
+
+    /*test function for rawdata*/
+    function getRawData() {
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/backend.php",
+            data:{'callFunction':'getRawData'},
+            dataType: 'json',
+            success: function (data) {
+
+                console.log("success   ");
+                console.log(data);
+            },
+            complete: function (data) {
+                // Schedule the next
+                //  setTimeout(doAjax, interval);
+                console.log("in complete");
+                console.log(data);
+            }
+        });
     }
 
-    //  setTimeout(doAjax, interval);
+
+    /*test function for flowrate*/
+    function getFlowRate() {
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/backend.php",
+            data:{'callFunction':'getFlowRate'},
+            dataType: 'json',
+            success: function (data) {
+                $("#flowRateData").html(data);
+            },
+            complete: function (data) {
+                // console.log("in completedd");
+                // console.log(data);
+            }
+        });
+    }
+
 </script>
 
 <style>
