@@ -5,7 +5,7 @@ Gambit are in the possession of a TUF-2000M ultrasonic energy meter, with a Modu
 I have chosen "Option 2: Web or native app" to complete this task and created a web app hosted on a Amazon Web Service AWS.
 The project is implemented using PHP, JavaScript/jQuery and CSS. PHP is the back bone of the project, doing all the heavy lifting such as parsing and converting the data in the back end and providing the actual web page. The information is moved between the back and frontend with JavaScript/jQuery and Ajax functions. The data fetched this way is then presented in a clear, easily readable table. The visualization, i.e. the looks, of the table is governed by CSS
 The web app itself is hosted on a Amazon AWS server.
-The project consists of a PHP backend simply called “backend.php” and a frontend webpage called “main.php.”
+The project consists of a PHP backend simply called “backend.php” and a frontend webpage called “index.php.”
 The flow is as follows: when the web page is loaded it sends a request to the backend through ajax, requesting the TUF-2000 data. The backend receives the request fetches the data and begins to parse and convert it with the aid of different conversion helper functions. And deposits the parsed data in an array witch is JSON-encoded and sent back to the frontend. In the front end the received data is looped through and used to build a table which is presented to the user.
 This process is can also be manually triggered by clicking the "Fetch data" button on the webpage.
 
