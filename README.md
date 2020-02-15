@@ -9,6 +9,9 @@ The project consists of a PHP backend simply called “backend.php” and a fron
 The flow is as follows: when the web page is loaded it sends a request to the backend through ajax, requesting the TUF-2000 data. The backend receives the request fetches the data and begins to parse and convert it with the aid of different conversion helper functions. And deposits the parsed data in an array witch is JSON-encoded and sent back to the frontend. In the front end the received data is looped through and used to build a table which is presented to the user.
 This process is can also be manually triggered by clicking the "Fetch data" button on the webpage.
 
+A link to the demo can be found below:
+http://tuf-2000m-challenge.us-west-2.elasticbeanstalk.com/
+
 ## Future improvements
 
 ### User interface
