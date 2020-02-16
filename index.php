@@ -7,8 +7,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<!-- The loading Modal --a>
-<!-- Loading "Spinner when fetching and parsing data"-->
+
+<!-- Loading "Spinner when fetching and parsing data, modal"-->
 <div id="loadingModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
@@ -18,29 +18,22 @@
             <img src='idle_gambit.gif' >
         </div>
     </div>
-
 </div>
 
-<?php
-    /*Fetches tuf-2000m data and stores in variable
-    *Test
-    */
-   // $jsonData = file_get_contents('http://tuftuf.gambitlabs.fi/feed.txt');
-?>
 
 <!doctype html>
     <html lang="en">
         <body>
             <div style="text-align:center; margin-top:40px; ">
                 <h1>TUF-2000M Readouts <div id ="readDate"><div> </h1>
+                <h2><div id ="dataDateDiv"><div> </h2>
                 <button onclick="createTable()" class="btn btn-primary" style="margin-bottom: 10px;">
-
                     Get data
                 </button>
             </div>
 
-            <div class="container" >
-                <table id="table1"  class="table table-hover table-condensed table-striped" >
+            <div class="container table-responsive" >
+                <table id="table1"  class="table table-hover table-condensed table-striped table-sm table-bordered  " >
                     <tr>
                         <th>Name</th>
                         <th>Converted value</th>
@@ -61,16 +54,16 @@
         createTable();
     });
 
-    /*Main worker. Presents loader, fetches daa from backend. On success shows,
+/*Main worker. Presents loader, fetches daa from backend. On success shows,
 *removes loader and creates new table with data
 * */
     function createTable() {
         $.ajax({
             type: 'POST',
             //Develop Url
-            url: "http://localhost/backend.php",
+            // url: "http://localhost/backend.php",
             /*OBS production url*/
-            //url: "http://tuf-2000m-challenge.us-west-2.elasticbeanstalk.com/backend.php",
+            url: "https://g-challenge.000webhostapp.com/backend.php",
             data: {'callFunction': 'createTable'},
             dataType: 'json',
 
@@ -88,6 +81,11 @@
                     $('<th>').text("Original Low/high"),
                     $('<th>').text("format"),
                 ).appendTo('#table1');
+
+                var date = data['date'];
+                delete data['date'];
+
+                $('#dataDateDiv').html(date);
 
                 $.each(data, function (i, item) {
                     var $tr = $('<tr>').append(
