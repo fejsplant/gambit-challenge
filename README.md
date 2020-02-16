@@ -2,7 +2,7 @@
 ## Web app presenting TUF-2000M  data
 
 Gambit are in the possession of a TUF-2000M ultrasonic energy meter, with a Modubus interface, witch is providing a live data feed to e website. This project is an answer to the Gambit Challenge, fetching the TUF-2000 data, parsing, converting and presenting it in a human readable format.
-I have chosen "Option 2: Web or native app" to complete this task and created a web app hosted on a Amazon Web Service AWS.
+I have chosen "Option 2: Web or native app" to complete this task and created a web app hosted on a 000webost server.
 The project is implemented using PHP, JavaScript/jQuery and CSS. PHP is the back bone of the project, doing all the heavy lifting such as parsing and converting the data in the back end and providing the actual web page. The information is moved between the back and frontend with JavaScript/jQuery and Ajax functions. The data fetched this way is then presented in a clear, easily readable table. The visualization, i.e. the looks, of the table is governed by CSS
 
 The web app itself is hosted on a webhostapp server.
